@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+
+  --font-display: "Plus Jakarta Sans", "Anton", sans-serif;
+
+
+  --color-primary: #100D22;
+  --color-secondary: #F6FB04;
+  --color-background: #878690;
+  --color-accent: #F6F6F6;
+}
