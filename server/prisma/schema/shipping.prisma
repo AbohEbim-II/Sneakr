@@ -1,0 +1,35 @@
+model Shipment {
+  id             String          @id @default(uuid(7)) @db.Uuid
+  order          Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId        String          @unique @db.Uuid
+  carrier        String // e.g. "FedEx", "DHL"
+  trackingNumber String?         @unique
+  status         ShipmentStatus  @default(PREPARING)
+  estimatedAt    DateTime?
+  shippedAt      DateTime?
+  deliveredAt    DateTime?
+  events         TrackingEvent[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model TrackingEvent {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  shipment   Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  shipmentId String
+  status     String // e.g. "Out for delivery"
+  location   String?
+  occurredAt DateTime
+  createdAt  DateTime @default(now())
+
+  @@index([shipmentId])
+}
+
+enum ShipmentStatus {
+  PREPARING
+  SHIPPED
+  IN_TRANSIT
+  OUT_FOR_DELIVERY
+  DELIVERED
+  FAILED
+}

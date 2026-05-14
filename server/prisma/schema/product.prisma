@@ -1,0 +1,95 @@
+model Brand {
+  id        String    @id @default(uuid(7)) @db.Uuid
+  name      String    @unique
+  slug      String    @unique
+  logoUrl   String?
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Category {
+  id        String    @id @default(uuid(7)) @db.Uuid
+  name      String    @unique
+  slug      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id            String         @id @default(uuid(7)) @db.Uuid
+  name          String
+  slug          String         @unique
+  description   String?
+  sku           String?        @unique
+  price         Decimal        @db.Decimal(10, 2)
+  isActive      Boolean        @default(true)
+  deletedAt     DateTime?
+  brand         Brand          @relation(fields: [brandId], references: [id])
+  brandId       String         @db.Uuid
+  category      Category       @relation(fields: [categoryId], references: [id])
+  categoryId    String         @db.Uuid
+  averageRating Float?
+  variants      Variant[]
+  images        ProductImage[]
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
+  reviews       Review[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([brandId])
+  @@index([categoryId])
+  @@index([isActive])
+  @@index([deletedAt])
+}
+
+model Variant {
+  id         String      @id @default(uuid(7)) @db.Uuid
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String      @db.Uuid
+  size       String // e.g. "US 10", "EU 44"
+  colorName  String?
+  colorHex   String?
+  stock      Int         @default(0)
+  sku        String?     @unique
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@unique([productId, size, colorName])
+  @@index([productId])
+}
+
+model ProductImage {
+  id        String   @id @default(uuid(7)) @db.Uuid
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String   @db.Uuid
+  url       String
+  altText   String?
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+}
+
+model Review {
+  id                 String   @id @default(uuid(7)) @db.Uuid
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId             String   @db.Uuid
+  product            Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId          String   @db.Uuid
+  rating             Int
+  title              String?
+  body               String?
+  isVerifiedPurchase Boolean  @default(false)
+  isVisible          Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@unique([userId, productId])
+  @@index([productId])
+  @@index([userId])
+}

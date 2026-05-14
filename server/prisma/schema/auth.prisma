@@ -1,0 +1,27 @@
+model User {
+  id       String  @id @default(uuid(7)) @db.Uuid
+  email    String  @unique
+  name     String?
+  password String
+  role     Role    @default(USER)
+
+  isVerified  Boolean @default(false)
+  avatar      String?
+  phoneNumber String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders        Order[]
+  addresses     Address[]
+  cart          Cart?
+  reviews       Review[]
+  refreshTokens RefreshToken[]
+  notifications Notification[]
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}

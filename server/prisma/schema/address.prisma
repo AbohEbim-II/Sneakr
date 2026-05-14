@@ -1,0 +1,18 @@
+model Address {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String   @db.Uuid
+  label      String? // e.g. "Home", "Work"
+  line1      String
+  line2      String?
+  city       String
+  state      String
+  country    String
+  postalCode String
+  isDefault  Boolean  @default(false)
+  orders     Order[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([userId])
+}
