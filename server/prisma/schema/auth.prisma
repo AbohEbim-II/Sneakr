@@ -6,6 +6,8 @@ model User {
   role     Role    @default(USER)
 
   isVerified  Boolean @default(false)
+  verificationToken         String?
+  verificationTokenExpiresAt DateTime?
   avatar      String?
   phoneNumber String?
 

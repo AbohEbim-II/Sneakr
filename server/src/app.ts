@@ -11,7 +11,7 @@ import { AppError } from "./utils/appError.js";
 // import { setupSwagger } from "./docs/swagger.setup.js";
 
 // Routers
-// import authRouter from "./modules/auth/auth.routes.js";
+import authRouter from "./modules/auth/auth.routes.js";
 // import sysUsersRouter from "./module/users/systemUser/systemUser.routes.js";
 // import orgUsersRouter from "./module/users/orgUser/orgUser.route.js";
 // import inventoryRouter from "./module/inventory/inventory.routes.js";
@@ -25,7 +25,7 @@ app.use(helmet());
 
 app.use(
     cors({
-        origin: "http://localhost:3000", // your frontend URL
+        origin: "http://localhost:5000", // your frontend URL
         credentials: true,
     }),
 );
@@ -40,7 +40,7 @@ app.get("/health", (_, res) => {
 });
 
 // Auth (public)
-// app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/auth", authRouter);
 
 // System Level actions
 // app.use("/api/v1/sys", sysUsersRouter);

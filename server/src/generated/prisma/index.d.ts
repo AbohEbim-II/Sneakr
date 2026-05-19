@@ -3978,6 +3978,8 @@ export namespace Prisma {
     password: string | null
     role: $Enums.Role | null
     isVerified: boolean | null
+    verificationToken: string | null
+    verificationTokenExpiresAt: Date | null
     avatar: string | null
     phoneNumber: string | null
     createdAt: Date | null
@@ -3991,6 +3993,8 @@ export namespace Prisma {
     password: string | null
     role: $Enums.Role | null
     isVerified: boolean | null
+    verificationToken: string | null
+    verificationTokenExpiresAt: Date | null
     avatar: string | null
     phoneNumber: string | null
     createdAt: Date | null
@@ -4004,6 +4008,8 @@ export namespace Prisma {
     password: number
     role: number
     isVerified: number
+    verificationToken: number
+    verificationTokenExpiresAt: number
     avatar: number
     phoneNumber: number
     createdAt: number
@@ -4019,6 +4025,8 @@ export namespace Prisma {
     password?: true
     role?: true
     isVerified?: true
+    verificationToken?: true
+    verificationTokenExpiresAt?: true
     avatar?: true
     phoneNumber?: true
     createdAt?: true
@@ -4032,6 +4040,8 @@ export namespace Prisma {
     password?: true
     role?: true
     isVerified?: true
+    verificationToken?: true
+    verificationTokenExpiresAt?: true
     avatar?: true
     phoneNumber?: true
     createdAt?: true
@@ -4045,6 +4055,8 @@ export namespace Prisma {
     password?: true
     role?: true
     isVerified?: true
+    verificationToken?: true
+    verificationTokenExpiresAt?: true
     avatar?: true
     phoneNumber?: true
     createdAt?: true
@@ -4131,6 +4143,8 @@ export namespace Prisma {
     password: string
     role: $Enums.Role
     isVerified: boolean
+    verificationToken: string | null
+    verificationTokenExpiresAt: Date | null
     avatar: string | null
     phoneNumber: string | null
     createdAt: Date
@@ -4161,6 +4175,8 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     isVerified?: boolean
+    verificationToken?: boolean
+    verificationTokenExpiresAt?: boolean
     avatar?: boolean
     phoneNumber?: boolean
     createdAt?: boolean
@@ -4181,6 +4197,8 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     isVerified?: boolean
+    verificationToken?: boolean
+    verificationTokenExpiresAt?: boolean
     avatar?: boolean
     phoneNumber?: boolean
     createdAt?: boolean
@@ -4194,6 +4212,8 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     isVerified?: boolean
+    verificationToken?: boolean
+    verificationTokenExpiresAt?: boolean
     avatar?: boolean
     phoneNumber?: boolean
     createdAt?: boolean
@@ -4207,13 +4227,15 @@ export namespace Prisma {
     password?: boolean
     role?: boolean
     isVerified?: boolean
+    verificationToken?: boolean
+    verificationTokenExpiresAt?: boolean
     avatar?: boolean
     phoneNumber?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "isVerified" | "avatar" | "phoneNumber" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "role" | "isVerified" | "verificationToken" | "verificationTokenExpiresAt" | "avatar" | "phoneNumber" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     orders?: boolean | User$ordersArgs<ExtArgs>
     addresses?: boolean | User$addressesArgs<ExtArgs>
@@ -4243,6 +4265,8 @@ export namespace Prisma {
       password: string
       role: $Enums.Role
       isVerified: boolean
+      verificationToken: string | null
+      verificationTokenExpiresAt: Date | null
       avatar: string | null
       phoneNumber: string | null
       createdAt: Date
@@ -4682,6 +4706,8 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
+    readonly verificationToken: FieldRef<"User", 'String'>
+    readonly verificationTokenExpiresAt: FieldRef<"User", 'DateTime'>
     readonly avatar: FieldRef<"User", 'String'>
     readonly phoneNumber: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -22608,6 +22634,8 @@ export namespace Prisma {
     password: 'password',
     role: 'role',
     isVerified: 'isVerified',
+    verificationToken: 'verificationToken',
+    verificationTokenExpiresAt: 'verificationTokenExpiresAt',
     avatar: 'avatar',
     phoneNumber: 'phoneNumber',
     createdAt: 'createdAt',
@@ -23027,7 +23055,7 @@ export namespace Prisma {
     OR?: AddressWhereInput[]
     NOT?: AddressWhereInput | AddressWhereInput[]
     id?: UuidFilter<"Address"> | string
-    userId?: StringFilter<"Address"> | string
+    userId?: UuidFilter<"Address"> | string
     label?: StringNullableFilter<"Address"> | string | null
     line1?: StringFilter<"Address"> | string
     line2?: StringNullableFilter<"Address"> | string | null
@@ -23064,7 +23092,7 @@ export namespace Prisma {
     AND?: AddressWhereInput | AddressWhereInput[]
     OR?: AddressWhereInput[]
     NOT?: AddressWhereInput | AddressWhereInput[]
-    userId?: StringFilter<"Address"> | string
+    userId?: UuidFilter<"Address"> | string
     label?: StringNullableFilter<"Address"> | string | null
     line1?: StringFilter<"Address"> | string
     line2?: StringNullableFilter<"Address"> | string | null
@@ -23102,7 +23130,7 @@ export namespace Prisma {
     OR?: AddressScalarWhereWithAggregatesInput[]
     NOT?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Address"> | string
-    userId?: StringWithAggregatesFilter<"Address"> | string
+    userId?: UuidWithAggregatesFilter<"Address"> | string
     label?: StringNullableWithAggregatesFilter<"Address"> | string | null
     line1?: StringWithAggregatesFilter<"Address"> | string
     line2?: StringNullableWithAggregatesFilter<"Address"> | string | null
@@ -23125,6 +23153,8 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isVerified?: BoolFilter<"User"> | boolean
+    verificationToken?: StringNullableFilter<"User"> | string | null
+    verificationTokenExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     phoneNumber?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -23144,6 +23174,8 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
+    verificationToken?: SortOrderInput | SortOrder
+    verificationTokenExpiresAt?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -23166,6 +23198,8 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isVerified?: BoolFilter<"User"> | boolean
+    verificationToken?: StringNullableFilter<"User"> | string | null
+    verificationTokenExpiresAt?: DateTimeNullableFilter<"User"> | Date | string | null
     avatar?: StringNullableFilter<"User"> | string | null
     phoneNumber?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
@@ -23185,6 +23219,8 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
+    verificationToken?: SortOrderInput | SortOrder
+    verificationTokenExpiresAt?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
     phoneNumber?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -23204,6 +23240,8 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
+    verificationToken?: StringNullableWithAggregatesFilter<"User"> | string | null
+    verificationTokenExpiresAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -23215,7 +23253,7 @@ export namespace Prisma {
     OR?: CartWhereInput[]
     NOT?: CartWhereInput | CartWhereInput[]
     id?: IntFilter<"Cart"> | number
-    userId?: StringFilter<"Cart"> | string
+    userId?: UuidFilter<"Cart"> | string
     createdAt?: DateTimeFilter<"Cart"> | Date | string
     updatedAt?: DateTimeFilter<"Cart"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -23260,7 +23298,7 @@ export namespace Prisma {
     OR?: CartScalarWhereWithAggregatesInput[]
     NOT?: CartScalarWhereWithAggregatesInput | CartScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Cart"> | number
-    userId?: StringWithAggregatesFilter<"Cart"> | string
+    userId?: UuidWithAggregatesFilter<"Cart"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Cart"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Cart"> | Date | string
   }
@@ -23271,7 +23309,7 @@ export namespace Prisma {
     NOT?: CartItemWhereInput | CartItemWhereInput[]
     id?: IntFilter<"CartItem"> | number
     cartId?: IntFilter<"CartItem"> | number
-    productId?: StringFilter<"CartItem"> | string
+    productId?: UuidFilter<"CartItem"> | string
     quantity?: IntFilter<"CartItem"> | number
     unitPrice?: DecimalFilter<"CartItem"> | Decimal | DecimalJsLike | number | string
     addedAt?: DateTimeFilter<"CartItem"> | Date | string
@@ -23303,7 +23341,7 @@ export namespace Prisma {
     OR?: CartItemWhereInput[]
     NOT?: CartItemWhereInput | CartItemWhereInput[]
     cartId?: IntFilter<"CartItem"> | number
-    productId?: StringFilter<"CartItem"> | string
+    productId?: UuidFilter<"CartItem"> | string
     quantity?: IntFilter<"CartItem"> | number
     unitPrice?: DecimalFilter<"CartItem"> | Decimal | DecimalJsLike | number | string
     addedAt?: DateTimeFilter<"CartItem"> | Date | string
@@ -23336,7 +23374,7 @@ export namespace Prisma {
     NOT?: CartItemScalarWhereWithAggregatesInput | CartItemScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"CartItem"> | number
     cartId?: IntWithAggregatesFilter<"CartItem"> | number
-    productId?: StringWithAggregatesFilter<"CartItem"> | string
+    productId?: UuidWithAggregatesFilter<"CartItem"> | string
     quantity?: IntWithAggregatesFilter<"CartItem"> | number
     unitPrice?: DecimalWithAggregatesFilter<"CartItem"> | Decimal | DecimalJsLike | number | string
     addedAt?: DateTimeWithAggregatesFilter<"CartItem"> | Date | string
@@ -23349,7 +23387,7 @@ export namespace Prisma {
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
     id?: UuidFilter<"Notification"> | string
-    userId?: StringFilter<"Notification"> | string
+    userId?: UuidFilter<"Notification"> | string
     type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
     title?: StringFilter<"Notification"> | string
     body?: StringFilter<"Notification"> | string
@@ -23376,7 +23414,7 @@ export namespace Prisma {
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
-    userId?: StringFilter<"Notification"> | string
+    userId?: UuidFilter<"Notification"> | string
     type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
     title?: StringFilter<"Notification"> | string
     body?: StringFilter<"Notification"> | string
@@ -23405,7 +23443,7 @@ export namespace Prisma {
     OR?: NotificationScalarWhereWithAggregatesInput[]
     NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Notification"> | string
-    userId?: StringWithAggregatesFilter<"Notification"> | string
+    userId?: UuidWithAggregatesFilter<"Notification"> | string
     type?: EnumNotificationTypeWithAggregatesFilter<"Notification"> | $Enums.NotificationType
     title?: StringWithAggregatesFilter<"Notification"> | string
     body?: StringWithAggregatesFilter<"Notification"> | string
@@ -23420,8 +23458,8 @@ export namespace Prisma {
     NOT?: OrderWhereInput | OrderWhereInput[]
     id?: UuidFilter<"Order"> | string
     orderSequence?: IntFilter<"Order"> | number
-    userId?: StringFilter<"Order"> | string
-    addressId?: StringFilter<"Order"> | string
+    userId?: UuidFilter<"Order"> | string
+    addressId?: UuidFilter<"Order"> | string
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     subtotal?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
     shippingCost?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
@@ -23461,8 +23499,8 @@ export namespace Prisma {
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     orderSequence?: IntFilter<"Order"> | number
-    userId?: StringFilter<"Order"> | string
-    addressId?: StringFilter<"Order"> | string
+    userId?: UuidFilter<"Order"> | string
+    addressId?: UuidFilter<"Order"> | string
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     subtotal?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
     shippingCost?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
@@ -23502,8 +23540,8 @@ export namespace Prisma {
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Order"> | string
     orderSequence?: IntWithAggregatesFilter<"Order"> | number
-    userId?: StringWithAggregatesFilter<"Order"> | string
-    addressId?: StringWithAggregatesFilter<"Order"> | string
+    userId?: UuidWithAggregatesFilter<"Order"> | string
+    addressId?: UuidWithAggregatesFilter<"Order"> | string
     status?: EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
     subtotal?: DecimalWithAggregatesFilter<"Order"> | Decimal | DecimalJsLike | number | string
     shippingCost?: DecimalWithAggregatesFilter<"Order"> | Decimal | DecimalJsLike | number | string
@@ -23518,9 +23556,9 @@ export namespace Prisma {
     OR?: OrderItemWhereInput[]
     NOT?: OrderItemWhereInput | OrderItemWhereInput[]
     id?: UuidFilter<"OrderItem"> | string
-    orderId?: StringFilter<"OrderItem"> | string
-    productId?: StringFilter<"OrderItem"> | string
-    variantId?: StringFilter<"OrderItem"> | string
+    orderId?: UuidFilter<"OrderItem"> | string
+    productId?: UuidFilter<"OrderItem"> | string
+    variantId?: UuidFilter<"OrderItem"> | string
     quantity?: IntFilter<"OrderItem"> | number
     unitPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
     totalPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
@@ -23549,9 +23587,9 @@ export namespace Prisma {
     AND?: OrderItemWhereInput | OrderItemWhereInput[]
     OR?: OrderItemWhereInput[]
     NOT?: OrderItemWhereInput | OrderItemWhereInput[]
-    orderId?: StringFilter<"OrderItem"> | string
-    productId?: StringFilter<"OrderItem"> | string
-    variantId?: StringFilter<"OrderItem"> | string
+    orderId?: UuidFilter<"OrderItem"> | string
+    productId?: UuidFilter<"OrderItem"> | string
+    variantId?: UuidFilter<"OrderItem"> | string
     quantity?: IntFilter<"OrderItem"> | number
     unitPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
     totalPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
@@ -23582,9 +23620,9 @@ export namespace Prisma {
     OR?: OrderItemScalarWhereWithAggregatesInput[]
     NOT?: OrderItemScalarWhereWithAggregatesInput | OrderItemScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"OrderItem"> | string
-    orderId?: StringWithAggregatesFilter<"OrderItem"> | string
-    productId?: StringWithAggregatesFilter<"OrderItem"> | string
-    variantId?: StringWithAggregatesFilter<"OrderItem"> | string
+    orderId?: UuidWithAggregatesFilter<"OrderItem"> | string
+    productId?: UuidWithAggregatesFilter<"OrderItem"> | string
+    variantId?: UuidWithAggregatesFilter<"OrderItem"> | string
     quantity?: IntWithAggregatesFilter<"OrderItem"> | number
     unitPrice?: DecimalWithAggregatesFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
     totalPrice?: DecimalWithAggregatesFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
@@ -23596,7 +23634,7 @@ export namespace Prisma {
     OR?: PaymentWhereInput[]
     NOT?: PaymentWhereInput | PaymentWhereInput[]
     id?: UuidFilter<"Payment"> | string
-    orderId?: StringFilter<"Payment"> | string
+    orderId?: UuidFilter<"Payment"> | string
     method?: EnumPaymentMethodFilter<"Payment"> | $Enums.PaymentMethod
     status?: EnumPaymentStatusFilter<"Payment"> | $Enums.PaymentStatus
     amount?: DecimalFilter<"Payment"> | Decimal | DecimalJsLike | number | string
@@ -23662,7 +23700,7 @@ export namespace Prisma {
     OR?: PaymentScalarWhereWithAggregatesInput[]
     NOT?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Payment"> | string
-    orderId?: StringWithAggregatesFilter<"Payment"> | string
+    orderId?: UuidWithAggregatesFilter<"Payment"> | string
     method?: EnumPaymentMethodWithAggregatesFilter<"Payment"> | $Enums.PaymentMethod
     status?: EnumPaymentStatusWithAggregatesFilter<"Payment"> | $Enums.PaymentStatus
     amount?: DecimalWithAggregatesFilter<"Payment"> | Decimal | DecimalJsLike | number | string
@@ -23800,8 +23838,8 @@ export namespace Prisma {
     price?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
     isActive?: BoolFilter<"Product"> | boolean
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    brandId?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
+    brandId?: UuidFilter<"Product"> | string
+    categoryId?: UuidFilter<"Product"> | string
     averageRating?: FloatNullableFilter<"Product"> | number | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -23849,8 +23887,8 @@ export namespace Prisma {
     price?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
     isActive?: BoolFilter<"Product"> | boolean
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    brandId?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
+    brandId?: UuidFilter<"Product"> | string
+    categoryId?: UuidFilter<"Product"> | string
     averageRating?: FloatNullableFilter<"Product"> | number | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -23896,8 +23934,8 @@ export namespace Prisma {
     price?: DecimalWithAggregatesFilter<"Product"> | Decimal | DecimalJsLike | number | string
     isActive?: BoolWithAggregatesFilter<"Product"> | boolean
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
-    brandId?: StringWithAggregatesFilter<"Product"> | string
-    categoryId?: StringWithAggregatesFilter<"Product"> | string
+    brandId?: UuidWithAggregatesFilter<"Product"> | string
+    categoryId?: UuidWithAggregatesFilter<"Product"> | string
     averageRating?: FloatNullableWithAggregatesFilter<"Product"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -23908,7 +23946,7 @@ export namespace Prisma {
     OR?: VariantWhereInput[]
     NOT?: VariantWhereInput | VariantWhereInput[]
     id?: UuidFilter<"Variant"> | string
-    productId?: StringFilter<"Variant"> | string
+    productId?: UuidFilter<"Variant"> | string
     size?: StringFilter<"Variant"> | string
     colorName?: StringNullableFilter<"Variant"> | string | null
     colorHex?: StringNullableFilter<"Variant"> | string | null
@@ -23943,7 +23981,7 @@ export namespace Prisma {
     AND?: VariantWhereInput | VariantWhereInput[]
     OR?: VariantWhereInput[]
     NOT?: VariantWhereInput | VariantWhereInput[]
-    productId?: StringFilter<"Variant"> | string
+    productId?: UuidFilter<"Variant"> | string
     size?: StringFilter<"Variant"> | string
     colorName?: StringNullableFilter<"Variant"> | string | null
     colorHex?: StringNullableFilter<"Variant"> | string | null
@@ -23977,7 +24015,7 @@ export namespace Prisma {
     OR?: VariantScalarWhereWithAggregatesInput[]
     NOT?: VariantScalarWhereWithAggregatesInput | VariantScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Variant"> | string
-    productId?: StringWithAggregatesFilter<"Variant"> | string
+    productId?: UuidWithAggregatesFilter<"Variant"> | string
     size?: StringWithAggregatesFilter<"Variant"> | string
     colorName?: StringNullableWithAggregatesFilter<"Variant"> | string | null
     colorHex?: StringNullableWithAggregatesFilter<"Variant"> | string | null
@@ -23992,7 +24030,7 @@ export namespace Prisma {
     OR?: ProductImageWhereInput[]
     NOT?: ProductImageWhereInput | ProductImageWhereInput[]
     id?: UuidFilter<"ProductImage"> | string
-    productId?: StringFilter<"ProductImage"> | string
+    productId?: UuidFilter<"ProductImage"> | string
     url?: StringFilter<"ProductImage"> | string
     altText?: StringNullableFilter<"ProductImage"> | string | null
     position?: IntFilter<"ProductImage"> | number
@@ -24015,7 +24053,7 @@ export namespace Prisma {
     AND?: ProductImageWhereInput | ProductImageWhereInput[]
     OR?: ProductImageWhereInput[]
     NOT?: ProductImageWhereInput | ProductImageWhereInput[]
-    productId?: StringFilter<"ProductImage"> | string
+    productId?: UuidFilter<"ProductImage"> | string
     url?: StringFilter<"ProductImage"> | string
     altText?: StringNullableFilter<"ProductImage"> | string | null
     position?: IntFilter<"ProductImage"> | number
@@ -24042,7 +24080,7 @@ export namespace Prisma {
     OR?: ProductImageScalarWhereWithAggregatesInput[]
     NOT?: ProductImageScalarWhereWithAggregatesInput | ProductImageScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"ProductImage"> | string
-    productId?: StringWithAggregatesFilter<"ProductImage"> | string
+    productId?: UuidWithAggregatesFilter<"ProductImage"> | string
     url?: StringWithAggregatesFilter<"ProductImage"> | string
     altText?: StringNullableWithAggregatesFilter<"ProductImage"> | string | null
     position?: IntWithAggregatesFilter<"ProductImage"> | number
@@ -24054,8 +24092,8 @@ export namespace Prisma {
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
     id?: UuidFilter<"Review"> | string
-    userId?: StringFilter<"Review"> | string
-    productId?: StringFilter<"Review"> | string
+    userId?: UuidFilter<"Review"> | string
+    productId?: UuidFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     title?: StringNullableFilter<"Review"> | string | null
     body?: StringNullableFilter<"Review"> | string | null
@@ -24088,8 +24126,8 @@ export namespace Prisma {
     AND?: ReviewWhereInput | ReviewWhereInput[]
     OR?: ReviewWhereInput[]
     NOT?: ReviewWhereInput | ReviewWhereInput[]
-    userId?: StringFilter<"Review"> | string
-    productId?: StringFilter<"Review"> | string
+    userId?: UuidFilter<"Review"> | string
+    productId?: UuidFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     title?: StringNullableFilter<"Review"> | string | null
     body?: StringNullableFilter<"Review"> | string | null
@@ -24124,8 +24162,8 @@ export namespace Prisma {
     OR?: ReviewScalarWhereWithAggregatesInput[]
     NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Review"> | string
-    userId?: StringWithAggregatesFilter<"Review"> | string
-    productId?: StringWithAggregatesFilter<"Review"> | string
+    userId?: UuidWithAggregatesFilter<"Review"> | string
+    productId?: UuidWithAggregatesFilter<"Review"> | string
     rating?: IntWithAggregatesFilter<"Review"> | number
     title?: StringNullableWithAggregatesFilter<"Review"> | string | null
     body?: StringNullableWithAggregatesFilter<"Review"> | string | null
@@ -24210,7 +24248,7 @@ export namespace Prisma {
     OR?: ShipmentWhereInput[]
     NOT?: ShipmentWhereInput | ShipmentWhereInput[]
     id?: UuidFilter<"Shipment"> | string
-    orderId?: StringFilter<"Shipment"> | string
+    orderId?: UuidFilter<"Shipment"> | string
     carrier?: StringFilter<"Shipment"> | string
     trackingNumber?: StringNullableFilter<"Shipment"> | string | null
     status?: EnumShipmentStatusFilter<"Shipment"> | $Enums.ShipmentStatus
@@ -24277,7 +24315,7 @@ export namespace Prisma {
     OR?: ShipmentScalarWhereWithAggregatesInput[]
     NOT?: ShipmentScalarWhereWithAggregatesInput | ShipmentScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Shipment"> | string
-    orderId?: StringWithAggregatesFilter<"Shipment"> | string
+    orderId?: UuidWithAggregatesFilter<"Shipment"> | string
     carrier?: StringWithAggregatesFilter<"Shipment"> | string
     trackingNumber?: StringNullableWithAggregatesFilter<"Shipment"> | string | null
     status?: EnumShipmentStatusWithAggregatesFilter<"Shipment"> | $Enums.ShipmentStatus
@@ -24463,6 +24501,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -24482,6 +24522,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -24501,6 +24543,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24520,6 +24564,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24539,6 +24585,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -24552,6 +24600,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -24565,6 +24615,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -25782,21 +25834,6 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -25810,6 +25847,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -25908,24 +25960,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -25942,6 +25976,24 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -25971,6 +26023,17 @@ export namespace Prisma {
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
     notIn?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type AddressListRelationFilter = {
@@ -26025,6 +26088,8 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpiresAt?: SortOrder
     avatar?: SortOrder
     phoneNumber?: SortOrder
     createdAt?: SortOrder
@@ -26038,6 +26103,8 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpiresAt?: SortOrder
     avatar?: SortOrder
     phoneNumber?: SortOrder
     createdAt?: SortOrder
@@ -26051,6 +26118,8 @@ export namespace Prisma {
     password?: SortOrder
     role?: SortOrder
     isVerified?: SortOrder
+    verificationToken?: SortOrder
+    verificationTokenExpiresAt?: SortOrder
     avatar?: SortOrder
     phoneNumber?: SortOrder
     createdAt?: SortOrder
@@ -26065,6 +26134,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -26471,17 +26554,6 @@ export namespace Prisma {
     not?: NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type PaymentCountOrderByAggregateInput = {
     id?: SortOrder
     orderId?: SortOrder
@@ -26547,20 +26619,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type ProductListRelationFilter = {
@@ -27165,6 +27223,10 @@ export namespace Prisma {
     set?: $Enums.Role
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type OrderUpdateManyWithoutUserNestedInput = {
     create?: XOR<OrderCreateWithoutUserInput, OrderUncheckedCreateWithoutUserInput> | OrderCreateWithoutUserInput[] | OrderUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutUserInput | OrderCreateOrConnectWithoutUserInput[]
@@ -27651,10 +27713,6 @@ export namespace Prisma {
 
   export type EnumPaymentStatusFieldUpdateOperationsInput = {
     set?: $Enums.PaymentStatus
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type OrderUpdateOneRequiredWithoutPaymentNestedInput = {
@@ -28234,20 +28292,6 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -28260,6 +28304,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -28303,23 +28361,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -28346,6 +28387,23 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -28377,6 +28435,17 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[] | ListEnumRoleFieldRefInput<$PrismaModel>
@@ -28385,6 +28454,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -28514,17 +28597,6 @@ export namespace Prisma {
     not?: NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
   export type NestedEnumPaymentMethodWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.PaymentMethod | EnumPaymentMethodFieldRefInput<$PrismaModel>
     in?: $Enums.PaymentMethod[] | ListEnumPaymentMethodFieldRefInput<$PrismaModel>
@@ -28543,20 +28615,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentStatusFilter<$PrismaModel>
     _max?: NestedEnumPaymentStatusFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -28610,6 +28668,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -28628,6 +28688,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -28704,6 +28766,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28722,6 +28786,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28755,8 +28821,8 @@ export namespace Prisma {
     NOT?: OrderScalarWhereInput | OrderScalarWhereInput[]
     id?: UuidFilter<"Order"> | string
     orderSequence?: IntFilter<"Order"> | number
-    userId?: StringFilter<"Order"> | string
-    addressId?: StringFilter<"Order"> | string
+    userId?: UuidFilter<"Order"> | string
+    addressId?: UuidFilter<"Order"> | string
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     subtotal?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
     shippingCost?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
@@ -28997,7 +29063,7 @@ export namespace Prisma {
     OR?: AddressScalarWhereInput[]
     NOT?: AddressScalarWhereInput | AddressScalarWhereInput[]
     id?: UuidFilter<"Address"> | string
-    userId?: StringFilter<"Address"> | string
+    userId?: UuidFilter<"Address"> | string
     label?: StringNullableFilter<"Address"> | string | null
     line1?: StringFilter<"Address"> | string
     line2?: StringNullableFilter<"Address"> | string | null
@@ -29055,8 +29121,8 @@ export namespace Prisma {
     OR?: ReviewScalarWhereInput[]
     NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
     id?: UuidFilter<"Review"> | string
-    userId?: StringFilter<"Review"> | string
-    productId?: StringFilter<"Review"> | string
+    userId?: UuidFilter<"Review"> | string
+    productId?: UuidFilter<"Review"> | string
     rating?: IntFilter<"Review"> | number
     title?: StringNullableFilter<"Review"> | string | null
     body?: StringNullableFilter<"Review"> | string | null
@@ -29117,7 +29183,7 @@ export namespace Prisma {
     OR?: NotificationScalarWhereInput[]
     NOT?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
     id?: UuidFilter<"Notification"> | string
-    userId?: StringFilter<"Notification"> | string
+    userId?: UuidFilter<"Notification"> | string
     type?: EnumNotificationTypeFilter<"Notification"> | $Enums.NotificationType
     title?: StringFilter<"Notification"> | string
     body?: StringFilter<"Notification"> | string
@@ -29133,6 +29199,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29151,6 +29219,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29214,6 +29284,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29232,6 +29304,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29265,7 +29339,7 @@ export namespace Prisma {
     NOT?: CartItemScalarWhereInput | CartItemScalarWhereInput[]
     id?: IntFilter<"CartItem"> | number
     cartId?: IntFilter<"CartItem"> | number
-    productId?: StringFilter<"CartItem"> | string
+    productId?: UuidFilter<"CartItem"> | string
     quantity?: IntFilter<"CartItem"> | number
     unitPrice?: DecimalFilter<"CartItem"> | Decimal | DecimalJsLike | number | string
     addedAt?: DateTimeFilter<"CartItem"> | Date | string
@@ -29486,6 +29560,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29504,6 +29580,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29538,6 +29616,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29556,6 +29636,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29574,6 +29656,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29592,6 +29676,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -29751,6 +29837,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29769,6 +29857,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29842,9 +29932,9 @@ export namespace Prisma {
     OR?: OrderItemScalarWhereInput[]
     NOT?: OrderItemScalarWhereInput | OrderItemScalarWhereInput[]
     id?: UuidFilter<"OrderItem"> | string
-    orderId?: StringFilter<"OrderItem"> | string
-    productId?: StringFilter<"OrderItem"> | string
-    variantId?: StringFilter<"OrderItem"> | string
+    orderId?: UuidFilter<"OrderItem"> | string
+    productId?: UuidFilter<"OrderItem"> | string
+    variantId?: UuidFilter<"OrderItem"> | string
     quantity?: IntFilter<"OrderItem"> | number
     unitPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
     totalPrice?: DecimalFilter<"OrderItem"> | Decimal | DecimalJsLike | number | string
@@ -30325,8 +30415,8 @@ export namespace Prisma {
     price?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
     isActive?: BoolFilter<"Product"> | boolean
     deletedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
-    brandId?: StringFilter<"Product"> | string
-    categoryId?: StringFilter<"Product"> | string
+    brandId?: UuidFilter<"Product"> | string
+    categoryId?: UuidFilter<"Product"> | string
     averageRating?: FloatNullableFilter<"Product"> | number | null
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
@@ -30674,7 +30764,7 @@ export namespace Prisma {
     OR?: VariantScalarWhereInput[]
     NOT?: VariantScalarWhereInput | VariantScalarWhereInput[]
     id?: UuidFilter<"Variant"> | string
-    productId?: StringFilter<"Variant"> | string
+    productId?: UuidFilter<"Variant"> | string
     size?: StringFilter<"Variant"> | string
     colorName?: StringNullableFilter<"Variant"> | string | null
     colorHex?: StringNullableFilter<"Variant"> | string | null
@@ -30705,7 +30795,7 @@ export namespace Prisma {
     OR?: ProductImageScalarWhereInput[]
     NOT?: ProductImageScalarWhereInput | ProductImageScalarWhereInput[]
     id?: UuidFilter<"ProductImage"> | string
-    productId?: StringFilter<"ProductImage"> | string
+    productId?: UuidFilter<"ProductImage"> | string
     url?: StringFilter<"ProductImage"> | string
     altText?: StringNullableFilter<"ProductImage"> | string | null
     position?: IntFilter<"ProductImage"> | number
@@ -31050,6 +31140,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -31068,6 +31160,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -31147,6 +31241,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31165,6 +31261,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31234,6 +31332,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -31252,6 +31352,8 @@ export namespace Prisma {
     password: string
     role?: $Enums.Role
     isVerified?: boolean
+    verificationToken?: string | null
+    verificationTokenExpiresAt?: Date | string | null
     avatar?: string | null
     phoneNumber?: string | null
     createdAt?: Date | string
@@ -31286,6 +31388,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31304,6 +31408,8 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isVerified?: BoolFieldUpdateOperationsInput | boolean
+    verificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    verificationTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -1,10 +1,11 @@
 // auth/token.type.ts
-export type UserType = "User" | "Admin";
+
+import type { Role } from "@/generated/prisma/index.js";
 
 export interface TokenPayload {
   sub: string;
   role: string;
-  type: UserType;
+  type: Role;
   jti?: string;
-  userId?: string; 
+  userId?: string;
 }

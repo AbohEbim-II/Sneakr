@@ -1,6 +1,7 @@
 import app from "./app.js";
 import connectDB from "./config/database.js";
 import { env } from "./config/env.js";
+import { startEmailWorker } from "./libs/emails/email.worker.js";
 
 
 const required = ['DATABASE_USER', 'DATABASE_PASSWORD', 'DATABASE_NAME', 'REDIS_PORT']
@@ -55,3 +56,4 @@ const startServer = async (): Promise<void> => {
 };
 
 startServer();
+startEmailWorker()
