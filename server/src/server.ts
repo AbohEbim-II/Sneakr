@@ -2,15 +2,16 @@ import app from "./app.js";
 import connectDB from "./config/database.js";
 import { env } from "./config/env.js";
 import { startEmailWorker } from "./libs/emails/email.worker.js";
+import { SSEManager } from "./libs/sse/sse.manager.js";
 
 
 const required = ['DATABASE_USER', 'DATABASE_PASSWORD', 'DATABASE_NAME', 'REDIS_PORT']
 
 for (const key of required) {
-  if (!process.env[key]) {
-    console.error(`Missing required env var: ${key}`)
-    process.exit(1)
-  }
+    if (!process.env[key]) {
+        console.error(`Missing required env var: ${key}`)
+        process.exit(1)
+    }
 }
 
 const startServer = async (): Promise<void> => {
@@ -19,8 +20,9 @@ const startServer = async (): Promise<void> => {
 
         // ── Background workers ──────────────────────────────────────────────────
         // Email worker: picks up jobs from Redis queue and sends via SMTP.
-
+        startEmailWorker();
         // SSE heartbeat: pings all connected clients every 25s to prevent
+        SSEManager.startHeartbeat(25_000);
         // proxies and load balancers from closing idle connections.
 
         const server = app.listen(env.PORT, () => {
@@ -33,7 +35,7 @@ const startServer = async (): Promise<void> => {
 
         const shutdown = (signal: string) => {
             console.log(`\n${signal} received — shutting down gracefully`);
-            // SSEManager.stopHeartbeat();
+            SSEManager.stopHeartbeat();
             server.close(() => {
                 console.log("HTTP server closed");
                 process.exit(0);
@@ -56,4 +58,3 @@ const startServer = async (): Promise<void> => {
 };
 
 startServer();
-startEmailWorker()

@@ -1,8 +1,6 @@
 import express from "express";
 import type { Request, Response, NextFunction } from "express";
 import cors from "cors";
-// import morgan from "morgan";
-// import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import { env } from "./config/env.js";
 import { httpLogger } from "./middleware/logger.middleware.js";
@@ -12,11 +10,8 @@ import { AppError } from "./utils/appError.js";
 
 // Routers
 import authRouter from "./modules/auth/auth.routes.js";
-// import sysUsersRouter from "./module/users/systemUser/systemUser.routes.js";
-// import orgUsersRouter from "./module/users/orgUser/orgUser.route.js";
-// import inventoryRouter from "./module/inventory/inventory.routes.js";
-// import salesRouter from "./module/sales/sales.routes.js";
-// import sseRouter from "./module/sse/sse.routes.js";
+import cartRouter from "./modules/cart/cart.routes.js";
+
 
 
 const app = express();
@@ -41,6 +36,7 @@ app.get("/health", (_, res) => {
 
 // Auth (public)
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/cart", cartRouter);
 
 // System Level actions
 // app.use("/api/v1/sys", sysUsersRouter);
