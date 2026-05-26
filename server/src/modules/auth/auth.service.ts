@@ -48,14 +48,13 @@ export class AuthService {
       },
     });
 
-    const payload = { sub: user.id, role: user.role, type: user.role };
+    const payload = { id: user.id, role: user.role, type: user.role };
     const { accessToken, refreshToken, jti } = TokenService.generateTokenPair(payload);
 
     await TokenService.saveRefreshToken({ token: refreshToken, userId: user.id, jti, meta });
     enqueueEmail("send:welcome", {
       to: user.email,
       recipientName: user.name ?? user.email,
-      email: user.email,
       loginUrl: `${env.CLIENT_URL}/login`,
       verificationUrl: `${env.CLIENT_URL}/verify-email?token=${verificationToken}`
     });
@@ -80,7 +79,7 @@ export class AuthService {
       throw new AppError("Invalid email or password", 401);
     }
 
-    const payload = { sub: user.id, role: user.role, type: user.role };
+    const payload = { id: user.id, role: user.role, type: user.role };
     const { accessToken, refreshToken, jti } = TokenService.generateTokenPair(payload);
 
     await TokenService.saveRefreshToken({ token: refreshToken, userId: user.id, jti, meta });
@@ -124,10 +123,10 @@ static async verifyEmail(token: string): Promise<void> {
 
     await TokenService.revokeToken(payload.jti!);
 
-    const user = await prisma.user.findUnique({ where: { id: payload.sub } });
+    const user = await prisma.user.findUnique({ where: { id: payload.id } });
     if (!user) throw new AppError("User not found", 404);
 
-    const newPayload = { sub: user.id, role: user.role, type: user.role };
+    const newPayload = { id: user.id, role: user.role, type: user.role };
     const { accessToken, refreshToken, jti } = TokenService.generateTokenPair(newPayload);
 
     await TokenService.saveRefreshToken({ token: refreshToken, userId: user.id, jti });

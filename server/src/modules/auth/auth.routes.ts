@@ -3,7 +3,7 @@ import { Router } from "express";
 import { AuthController } from "./auth.controller.js";
 import { validate } from "@/middleware/validate.middleware.js";
 import { authenticate } from "@/middleware/auth.middleware.js";
-import {isAdmin} from "@/middleware/authenticate.admin.middleware.js";
+import {authorize} from "@/middleware/rbac.middleware.js";
 import {
   registerSchema,
   loginSchema,
@@ -26,6 +26,6 @@ router.post("/reset-password", validate(resetPasswordSchema), AuthController.res
 // ─── Protected ────────────────────────────────────────────────────────────────
 
 router.post("/logout", authenticate, AuthController.logout);
-router.post("/logout-all", authenticate, isAdmin, AuthController.logoutAll);
+router.post("/logout-all", authenticate, authorize("ADMIN"), AuthController.logoutAll);
 
 export default router;

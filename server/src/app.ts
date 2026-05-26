@@ -11,6 +11,11 @@ import { AppError } from "./utils/appError.js";
 // Routers
 import authRouter from "./modules/auth/auth.routes.js";
 import cartRouter from "./modules/cart/cart.routes.js";
+import productRouter from "./modules/products/products.routes.js";
+import brandRouter from "./modules/products/brand/brands.routes.js";
+import categoryRouter from "./modules/products/category/category.routes.js";
+import reviewRouter from "./modules/products/reviews/reviews.routes.js";
+import variantRouter from "./modules/products/variant/variants.routes.js";
 
 
 
@@ -36,16 +41,16 @@ app.get("/health", (_, res) => {
 
 // Auth (public)
 app.use("/api/v1/auth", authRouter);
+
+// Cart
 app.use("/api/v1/cart", cartRouter);
 
-// System Level actions
-// app.use("/api/v1/sys", sysUsersRouter);
-
-// Org Level Actions
-// app.use("/api/v1/orgs/:orgSlug/users", orgUsersRouter);
-// app.use("/api/v1/orgs/:orgSlug/inventory", inventoryRouter);
-// app.use("/api/v1/orgs/:orgSlug/sales", salesRouter);
-// app.use("/api/v1/orgs/:orgSlug/events", sseRouter);
+// Product
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/product/brand", brandRouter); // brands are part of products module
+app.use("/api/v1/product/category", categoryRouter); // sizes are part of products module
+app.use("/api/v1/product/review", reviewRouter); // reviews are part of products module
+app.use("/api/v1/product/variant", variantRouter); // variants are part of products module
 
 // API Docs
 // setupSwagger(app);

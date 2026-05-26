@@ -2,14 +2,10 @@ import { Worker, type Job } from "bullmq";
 import { env } from "@/config/env.js";
 import { logger } from "@/libs/logger.js";
 import { sendMail } from "@/libs/mail.js";
-import {
-    welcomeEmail,
-    passwordResetEmail,
-    passwordChangedEmail,
-    lowStockEmail,
-    saleApprovedEmail,
-} from "./email.templates.js";
+import  WelcomeEmail  from "./templates/welcome.email.js";
+import  PasswordResetEmail  from "./templates/password-reset.email.js";
 import type { EmailJobMap, EmailJobName } from "./email.queue.js";
+import { render } from "@react-email/render";
 
 // ─── Job processor ────────────────────────────────────────────────────────────
 
@@ -21,38 +17,25 @@ async function processEmailJob(
     switch (job.name) {
         case "send:welcome": {
             const { to, ...data } = job.data as EmailJobMap["send:welcome"];
-            const { subject, html } = welcomeEmail(data);
-            await sendMail(to, subject, html);
+            const html  = await render( WelcomeEmail(data));
+            await sendMail(to, "Welcome to Sneakr 👟", html);
             break;
         }
 
         case "send:password-reset": {
             const { to, ...data } = job.data as EmailJobMap["send:password-reset"];
-            const { subject, html } = passwordResetEmail(data);
-            await sendMail(to, subject, html);
+            const html = await render(PasswordResetEmail(data));
+            await sendMail(to, "Password Reset Request", html);
             break;
         }
 
-        case "send:password-changed": {
-            const { to, ...data } = job.data as EmailJobMap["send:password-changed"];
-            const { subject, html } = passwordChangedEmail(data);
-            await sendMail(to, subject, html);
-            break;
-        }
+        // case "send:password-changed": {
+        //     const { to, ...data } = job.data as EmailJobMap["send:password-changed"];
+        //     const { subject, html } = passwordChangedEmail(data);
+        //     await sendMail(to, subject, html);
+        //     break;
+        // }
 
-        case "send:low-stock": {
-            const { to, ...data } = job.data as EmailJobMap["send:low-stock"];
-            const { subject, html } = lowStockEmail(data);
-            await sendMail(to, subject, html);
-            break;
-        }
-
-        case "send:sale-approved": {
-            const { to, ...data } = job.data as EmailJobMap["send:sale-approved"];
-            const { subject, html } = saleApprovedEmail(data);
-            await sendMail(to, subject, html);
-            break;
-        }
 
         default: {
             // Exhaustiveness guard — TypeScript will catch unhandled cases at compile time

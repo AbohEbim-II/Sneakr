@@ -2,6 +2,7 @@ import prisma from "@/config/prisma.js";
 import { AppError } from "@/utils/appError.js";
 import slugify from "slugify";
 import type { CreateBrandDTO, UpdateBrandDTO } from "./brands.schema.js";
+import { logger } from "@/libs/logger.js";
 
 export interface BrandDTO {
     id: string;
@@ -45,6 +46,7 @@ export class BrandService {
             data: { name: dto.name, slug, logoUrl: dto.logoUrl ?? null },
         });
 
+        logger.info( {brandId: brand.id, event: "BRAND_ADDED"}, "Brand Created")
         return this.toDTO(brand);
     }
 
@@ -73,6 +75,8 @@ export class BrandService {
         }
 
         const updated = await prisma.brand.update({ where: { id }, data });
+                logger.info( {brandId: brand.id, event: "BRAND_UPDATED"}, "Brand Updated")
+
         return this.toDTO(updated);
     }
 
@@ -93,6 +97,8 @@ export class BrandService {
         }
 
         await prisma.brand.delete({ where: { id } });
+                logger.info( {brandId: brand.id, event: "BRAND_REMOVED"}, "Brand Deleted")
+
     }
 
     // ─── DTO ──────────────────────────────────────────────────────────────────

@@ -103,6 +103,7 @@ export class ProductService {
                 variants: true,
             },
         });
+        logger.info({ productId: product.id, event: "PRODUCT_ADDED" },"Product created")
 
         return this.toDetailDTO(product);
     }
@@ -124,6 +125,8 @@ export class ProductService {
             },
         });
 
+                logger.info({ productId: product.id, event: "PRODUCT_UPDATED" },"Product updated")
+
         return this.toDetailDTO(updated);
     }
 
@@ -137,6 +140,8 @@ export class ProductService {
             where: { id },
             data: { deletedAt: new Date(), isActive: false },
         });
+                logger.info({ productId: product.id, event: "PRODUCT_REMOVED" },"Product deleted")
+
     }
 
     // ─── Upload image ─────────────────────────────────────────────────────────

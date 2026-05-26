@@ -1,22 +1,13 @@
 import { Queue } from "bullmq";
 import { env } from "@/config/env.js";
 import { logger } from "@/libs/logger.js";
-import type {
-    WelcomeEmailData,
-    PasswordResetEmailData,
-    PasswordChangedEmailData,
-    LowStockEmailData,
-    SaleApprovedEmailData,
-} from "./email.templates.js";
-
+import type {WelcomeEmailProps} from "@/libs/emails/templates/welcome.email.js";
+import type { PasswordResetEmailProps } from "./templates/password-reset.email.js";
 // ─── Job type registry ────────────────────────────────────────────────────────
 
 export type EmailJobMap = {
-    "send:welcome": WelcomeEmailData & { to: string };
-    "send:password-reset": PasswordResetEmailData & { to: string };
-    "send:password-changed": PasswordChangedEmailData & { to: string };
-    "send:low-stock": LowStockEmailData & { to: string | string[] };
-    "send:sale-approved": SaleApprovedEmailData & { to: string };
+    "send:welcome": WelcomeEmailProps & { to: string };
+    "send:password-reset": PasswordResetEmailProps & { to: string };
 };
 
 export type EmailJobName = keyof EmailJobMap;

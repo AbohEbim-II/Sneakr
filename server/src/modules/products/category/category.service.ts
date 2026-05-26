@@ -2,6 +2,7 @@ import prisma from "@/config/prisma.js";
 import { AppError } from "@/utils/appError.js";
 import slugify from "slugify";
 import type { CreateCategoryDTO, UpdateCategoryDTO } from "./category.schema.js";
+import { logger } from "@/libs/logger.js";
 
 export interface CategoryDTO {
     id: string;
@@ -44,6 +45,8 @@ export class CategoryService {
             data: { name: dto.name, slug },
         });
 
+        logger.info({ categoryId: category.id, event: "CATEGORY_ADDED" }, "Category Created")
+
         return this.toDTO(category);
     }
 
@@ -72,6 +75,8 @@ export class CategoryService {
             data,
         });
 
+        logger.info({ categoryId: category.id, event: "CATEGORY_EDITED" }, "Category Updated")
+
         return this.toDTO(updated);
     }
 
@@ -92,6 +97,8 @@ export class CategoryService {
         }
 
         await prisma.category.delete({ where: { id } });
+        logger.info({ categoryId: category.id, event: "CATEGORY_REMOVED" }, "Category Deleted")
+
     }
 
     // ─── DTO ──────────────────────────────────────────────────────────────────

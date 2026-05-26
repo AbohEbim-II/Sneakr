@@ -71,7 +71,7 @@ export class TokenService {
         try {
             const decoded = jwt.verify(token, env.JWT_SECRET) as TokenPayload;
 
-            if (!decoded.sub || !decoded.role) {
+            if (!decoded.id || !decoded.role) {
                 throw new AppError("Invalid token payload", 401);
             }
 
